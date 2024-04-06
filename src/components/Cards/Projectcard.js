@@ -1,7 +1,12 @@
 // import { Details } from '@mui/icons-material'/
+// import { Title } from '@mui/icons-material'
 import React from 'react'
 import styled from 'styled-components'
-import { projects } from '../../data/constants'
+
+
+
+
+
 
 
 
@@ -41,6 +46,30 @@ const Details = styled.div`
     gap: 0px;
     padding: 0px 2px;
 `
+const Title = styled.div`
+    font-size: 20px;
+    font-weight: 600;
+    color: ${({ theme }) => theme.text_secondary};
+    overflow: hidden;
+    display: -webkit-box;
+    max-width: 100%;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+`
+const Github = styled.div`
+    font-size: 14px;
+    font-weight: 600;
+    color: ${({ theme }) => theme.text_secondary};
+    overflow: hidden;
+    display: -webkit-box;
+    max-width: 100%;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+`
 
 const Tags = styled.div`
     width: 100%;
@@ -50,7 +79,7 @@ const Tags = styled.div`
     gap: 8px;
     margin-top: 4px;
     `
-    const Tag = styled.span`
+const Tag = styled.span`
     font-size: 12px;
     font-weight: 400;
     color: ${({ theme }) => theme.primary};
@@ -62,18 +91,36 @@ const Tags = styled.div`
 
 
 
-const Projectcard = ({project}) => {
+const Projectcard = ({ project }) => {
+  // Check if project is undefined or null
+  if (!project) {
+    return null; // Or render an alternative component/message
+  }
+
+  // Check if project.image is undefined or null
+  if (!project.image) {
+    return <div>No image found for this project</div>; // Or render an alternative message
+  }
+
   return (
-   <Card>
-    <Image src={projects.image}/>
-    <Tags>
-      {/* {project.tags.map((tag)=>(
-        <Tag key={tag}>{tag}</Tag>
-      ))} */}
-    </Tags>
-    <Details></Details>
-   </Card>
-  )
+    <Card>
+      <Image src={project.image}/>
+      <Tags>
+        {/* Render tags if project.tags exists */}
+        {project.tags && project.tags.map((tag) => (
+          <Tag key={tag}>{tag}</Tag>
+        ))}
+      </Tags>
+      <Details>
+        <Title>{project.title}</Title>
+        <a href={project.github} target="_blank" rel="noopener noreferrer">
+      <Github>{project.github}</Github>
+        </a>
+      </Details>
+    </Card>
+  );
 }
+
+
 
 export default Projectcard

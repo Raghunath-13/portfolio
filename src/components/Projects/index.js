@@ -98,7 +98,7 @@ margin-top: 20px;
 
     
 
-
+ 
 
 
 const Projects = () => {
@@ -111,7 +111,7 @@ const [toggle, settoggle] = useState("all")
         <Desc>
           I have worked on a wide range of projects. From web apps to android apps. Here are some of my projects.
         </Desc>
-        <ToggleButtonGroup >
+        {/* <ToggleButtonGroup >
           
           {toggle === 'all' ?
             <ToggleButton active value="all" onClick={() => settoggle('web app')}>WEB APP'S</ToggleButton>
@@ -119,9 +119,9 @@ const [toggle, settoggle] = useState("all")
             <ToggleButton value="all" onClick={() => settoggle('web app')}>WEB APP'S</ToggleButton>
           }
           
-        </ToggleButtonGroup>
+        </ToggleButtonGroup> */}
         <CardContainer>
-            {toggle === "all"  && projects.map((project) => <Projectcard project/>)}
+            {toggle === "all"  && projects.map((project,index) => <Projectcard key={index} project={project}/>)}
             {projects.filter((item)=> item.category === toggle).map((project)=>(<Projectcard project={project}/>))}
             <Projectcard/>
         </CardContainer>

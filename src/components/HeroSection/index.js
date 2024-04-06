@@ -234,7 +234,7 @@ const Hero = () => {
 
             </TextLoop>
             <SubTitle>{Bio.description}</SubTitle>
-            <ResumeButton href={Bio.resume} target="display">Check Resume</ResumeButton>
+            <ResumeButton href="https://drive.google.com/file/d/1WS6pTthXZubce0zG8eoKx5NaHFvErfvk/view?usp=drive_link" target="display">Check Resume</ResumeButton>
           </HeroLeftContainer>
           <HeroRightContainer><Image src={self} alt="self "/></HeroRightContainer>
         </HeroInnerContainer>
